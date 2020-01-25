@@ -1,0 +1,46 @@
+/* Tippy theme */
+.tippy-tooltip[data-out-of-boundaries] {
+  opacity: 0;
+}
+
+.tippy-tooltip.red-theme {
+  background-color: #da4620;
+  cursor: not-allowed;
+  font-size: 80%;
+  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+
+.tippy-tooltip.red-theme .tippy-arrow {
+  transform: scale(0.7);
+}
+
+.tippy-tooltip.red-theme[data-placement^="top"] .tippy-arrow {
+  border-top-color: #da4620;
+}
+.tippy-tooltip.red-theme[data-placement^="bottom"] .tippy-arrow {
+  border-bottom-color: #da4620;
+}
+.tippy-tooltip.red-theme[data-placement^="left"] .tippy-arrow {
+  border-left-color: #da4620;
+}
+.tippy-tooltip.red-theme[data-placement^="right"] .tippy-arrow {
+  border-right-color: #da4620;
+}
+
+/* Tippy overlay info Theme */
+.tippy-tooltip.overlayinfo-theme {
+  background-color: whitesmoke;
+  border: solid #da4620 1px;
+  color: #4d4d4d;
+}
+.tippy-tooltip.overlayinfo-theme b {
+  font-weight: bold;
+  font-size: 150%;
+  border: solid #4d4d4d 1px;
+  border-radius: 0.2em;
+  display: inline-block;
+  padding: 0 0.2em;
+  margin: 0 0.1em;
+  vertical-align: baseline;
+  line-height: normal;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Learn the shortcuts",
+  "short_name": "LTS",
+  "icons": {
+    "128": "icons/logo-128.png",
+    "48": "icons/logo-48.png",
+    "16": "icons/logo-16.png"
+  },
+  "content_scripts": [
+    {
+      "css": [
+        "style.css"
+      ],
+      "js": [
+        "shortcuts.js"
+      ],
+      "matches": [
+        "https://mail.google.com/*"
+      ]
+    }
+  ]
+}

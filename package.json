@@ -1,0 +1,36 @@
+{
+  "name": "learn-the-shortcuts",
+  "version": "0.2.0",
+  "description": "Learn the Gmail keyboard shortcuts easily",
+  "author": "Matthieu Gicquel",
+  "license": "MIT",
+  "private": false,
+  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "create-icons": "for x in 16 48 128 ; do inkscape -z src/icons/logo.svg -o src/icons/logo-${x}.png -w ${x}  ; done"
+  },
+  "dependencies": {
+    "tippy.js": "^5.1.4"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
+    "rollup": "^1.29.0",
+    "rollup-plugin-chrome-extension": "^2.0.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-empty-dir": "^1.0.4",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-zip": "^0.5.2"
+  }
+}
