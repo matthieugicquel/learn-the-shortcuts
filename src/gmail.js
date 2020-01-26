@@ -1,4 +1,6 @@
-export default [
+import { init_lts } from "./shortcuts.js";
+
+init_lts([
   /* Actions toolbar for messages */
   {
     selector: 'div[act="19"]',
@@ -148,4 +150,4 @@ export default [
     placement: "top",
     comment: "Forward (bottom of conversation)"
   }
-];
+]);

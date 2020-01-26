@@ -8,14 +8,14 @@
   },
   "content_scripts": [
     {
+      "matches": [
+        "https://mail.google.com/*"
+      ],
       "css": [
         "style.css"
       ],
       "js": [
-        "shortcuts.js"
-      ],
-      "matches": [
-        "https://mail.google.com/*"
+        "gmail.js"
       ]
     }
   ]

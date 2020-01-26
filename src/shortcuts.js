@@ -3,17 +3,8 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/animations/shift-toward-extreme.css";
 
-import shortcuts from "./gmail.js";
-
-/* Feature toggles */
-init();
-feature_show_tooltips_on_hover();
-feature_overlay_info();
-feature_shortcuts_overlay();
-// NOT READY feature_block_clicks();
-
-/* Shared config */
-function init() {
+/* Shared config and init */
+function init_lts(shortcuts_list) {
   tippy.setDefaultProps({
     // Appearance
     theme: "red",
@@ -26,11 +17,16 @@ function init() {
     boundary: "viewport",
     ignoreAttributes: true
   });
+
+  feature_show_tooltips_on_hover(shortcuts_list);
+  feature_overlay_info();
+  feature_shortcuts_overlay(shortcuts_list);
+  // NOT READY feature_block_clicks();
 }
 
 /* Features */
 
-function feature_show_tooltips_on_hover() {
+function feature_show_tooltips_on_hover(shortcuts) {
   for (const shortcut_item of shortcuts) {
     const tippy_config = {
       target: shortcut_item.selector,
@@ -68,7 +64,7 @@ function feature_overlay_info() {
   });
 }
 
-function feature_shortcuts_overlay() {
+function feature_shortcuts_overlay(shortcuts) {
   let keydown = false; // onkeydown fires multiple times
 
   document.addEventListener("keydown", event => {
@@ -101,28 +97,30 @@ function feature_shortcuts_overlay() {
   });
 }
 
-function feature_block_clicks() {
-  function generate_stylesheet() {
-    const style_element = document.createElement("style");
-    document.head.appendChild(style_element);
-    const stylesheet = style_element.sheet;
+// function feature_block_clicks() {
+//   function generate_stylesheet() {
+//     const style_element = document.createElement("style");
+//     document.head.appendChild(style_element);
+//     const stylesheet = style_element.sheet;
 
-    for (const shortcut_item of shortcuts) {
-      console.log(shortcut_item.selector + ":active { pointer-events: none; }");
-      stylesheet.insertRule(
-        shortcut_item.selector + ":active { pointer-events: none; }"
-      );
-      stylesheet.insertRule(
-        shortcut_item.selector + " * { cursor: not-allowed; }"
-      );
-    }
-  }
-  // Will only generate the style rule once, the first time they are neeeded
-  document.addEventListener(
-    "tooltipshow",
-    () => {
-      generate_stylesheet();
-    },
-    { once: true }
-  );
-}
+//     for (const shortcut_item of shortcuts) {
+//       console.log(shortcut_item.selector + ":active { pointer-events: none; }");
+//       stylesheet.insertRule(
+//         shortcut_item.selector + ":active { pointer-events: none; }"
+//       );
+//       stylesheet.insertRule(
+//         shortcut_item.selector + " * { cursor: not-allowed; }"
+//       );
+//     }
+//   }
+//   // Will only generate the style rule once, the first time they are neeeded
+//   document.addEventListener(
+//     "tooltipshow",
+//     () => {
+//       generate_stylesheet();
+//     },
+//     { once: true }
+//   );
+// }
+
+export { init_lts };
