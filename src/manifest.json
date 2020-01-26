@@ -15,7 +15,20 @@
         "style.css"
       ],
       "js": [
+        "shortcuts.js",
         "gmail.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://github.com/*"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "js": [
+        "shortcuts.js",
+        "github.js"
       ]
     }
   ]

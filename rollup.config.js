@@ -5,6 +5,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import postcss from "rollup-plugin-postcss";
 import replace from "rollup-plugin-replace";
+import iife from "rollup-plugin-iife";
 import zip from "rollup-plugin-zip";
 
 // We consider it's production if we're not watching
@@ -24,6 +25,7 @@ export default {
     resolve(),
     commonjs(),
     postcss(),
+    iife(),
     replace({
       "process.env.NODE_ENV": JSON.stringify(
         production ? "production" : "development"
