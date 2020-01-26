@@ -11,10 +11,9 @@ init_lts([
   { selector: 'div[act="290"]', shortcut: "b", comment: "Postpone" },
   { selector: "div.G-tF > :nth-child(4) > :nth-child(1)", shortcut: "v", comment: "Move to" },
   { selector: "div.G-tF > :nth-child(4) > :nth-child(2)", shortcut: "l", comment: "Labels" },
-  { selector: "div.G-tF > :nth-child(5) > :nth-child(1)", shortcut: ".", comment: "Other actions" },
+  { selector: "div.G-tF .nf", shortcut: ".", comment: "Other actions" },
   { selector: "div.adF .h0 > :nth-child(2)", shortcut: "k", comment: "Previous conversation" },
   { selector: "div.adF .h0 > :nth-child(3)", shortcut: "j", comment: "Next conversation" },
-  { selector: "div.G-tF > :nth-child(5) > :nth-child(1)", shortcut: ".", comment: "Other actions" },
 
   /* Left panel (navigation) */
   { selector: "div.T-I-KE", shortcut: "c", placement: "top", comment: "New message" },
