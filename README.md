@@ -6,7 +6,7 @@
 
 Learn the shortcuts is a browser extension that helps you learn the keyboard shortcuts for some web applications and use those instead of your mouse.
 
-For now, it works with Gmail.
+For now, it works for the most useful shortcuts in Gmail and Github
 
 ## Installation
 
@@ -14,7 +14,7 @@ Learn the shortcuts is available for [Firefox](https://addons.mozilla.org/fr/fir
 
 ## Usage
 
-Just press and hold **alt** on a supported website (only Gmail for now) and an overlay will show you all the keyboard shortcuts you can use.
+Just press and hold **alt** on a supported website and an overlay will show you all the keyboard shortcuts you can use.
 
 *Note:* Keyboard shortcuts are not enabled by default in Gmail. You'll need to enable them by going to Settings > General > Keyboard shortcuts
 
