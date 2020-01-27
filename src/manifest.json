@@ -30,6 +30,18 @@
         "shortcuts.js",
         "github.js"
       ]
+    },
+    {
+      "matches": [
+        "https://trello.com/*"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "js": [
+        "shortcuts.js",
+        "trello.js"
+      ]
     }
   ]
 }
