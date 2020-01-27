@@ -21,13 +21,14 @@ init_lts([
   /* TODO: Navigation & card moving */
 
   /* Cards actions */
-  { selector: '.js-archive', shortcut: "c", placement: "right", comment: "Archive" },
+  { selector: '.js-archive, .js-archive-card', shortcut: "c", placement: "right", comment: "Archive" },
   { selector: '.js-edit-due-date, .js-add-due-date', shortcut: "d", placement: "right", comment: "Edit due date" },
   { selector: '.js-add-checklist-menu', shortcut: "-", placement: "right", comment: "Add Checklist" },
   { selector: '.active-card .js-card-menu', shortcut: "e", placement: "right", comment: "Fast Edit" },
   { selector: '.js-edit-labels', shortcut: "l", placement: "right", comment: "Edit labels" },
   { selector: '.js-edit-members, .js-change-card-members', shortcut: "m", placement: "right", comment: "Edit members" },
   { selector: '.js-card-detail-title-input', shortcut: "t", placement: "left", comment: "Change title" },
+  { selector: '.js-subscribe', shortcut: "s", placement: "right", comment: "Subscribe" },
   { selector: '.js-vote', shortcut: "v", placement: "right", comment: "Vote" },
   { selector: '.js-close-window', shortcut: "esc", placement: "top", comment: "Close window" },
   // TODO: Make something nice for Cmd/Ctrl shortcuts
