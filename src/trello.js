@@ -29,7 +29,7 @@ init_lts([
   { selector: '.js-edit-members, .js-change-card-members', shortcut: "m", placement: "right", comment: "Edit members"},
   { selector: '.js-card-detail-title-input', shortcut: "t", placement: "left", comment: "Change title"},
   { selector: '.js-vote', shortcut: "v", placement: "right", comment: "Vote"},
-  // No tooltip: "esc"
+  { selector: '.js-close-window', shortcut: "esc", placement: "top", comment: "Close window" }
   // TODO: Make something nice for Cmd/Ctrl shortcuts
   // { selector: '.js-add-comment', shortcut: "Cmd/Ctrl + Enter"}
 
