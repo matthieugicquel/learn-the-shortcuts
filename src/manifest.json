@@ -42,6 +42,18 @@
         "shortcuts.js",
         "trello.js"
       ]
+    },
+    {
+      "matches": [
+        "https://calendar.google.com/*"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "js": [
+        "shortcuts.js",
+        "google-calendar.js"
+      ]
     }
   ]
 }
