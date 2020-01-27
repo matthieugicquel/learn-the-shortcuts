@@ -25,6 +25,6 @@ init_lts([
   // No button / No tooltip: "z" Undo last action
 
   /* Application */
-  { selector: 'header .M9Bg4d', shortcut: "/", placement: "bottom", comment: "Search" },
+  { selector: 'header .d6McF', shortcut: "/", placement: "bottom", comment: "Search" },
   { selector: '.RDPZE', shortcut: "+", placement: "right", comment: "Add calendar" }
 ]);
