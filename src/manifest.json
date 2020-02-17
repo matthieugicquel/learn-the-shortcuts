@@ -15,8 +15,8 @@
         "style.css"
       ],
       "js": [
-        "shortcuts.js",
-        "gmail.js"
+        "shortcuts.ts",
+        "gmail.ts"
       ]
     },
     {
@@ -27,8 +27,8 @@
         "style.css"
       ],
       "js": [
-        "shortcuts.js",
-        "github.js"
+        "shortcuts.ts",
+        "github.ts"
       ]
     },
     {
@@ -39,8 +39,8 @@
         "style.css"
       ],
       "js": [
-        "shortcuts.js",
-        "trello.js"
+        "shortcuts.ts",
+        "trello.ts"
       ]
     },
     {
@@ -51,8 +51,8 @@
         "style.css"
       ],
       "js": [
-        "shortcuts.js",
-        "google-calendar.js"
+        "shortcuts.ts",
+        "google-calendar.ts"
       ]
     }
   ]
