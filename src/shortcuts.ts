@@ -56,10 +56,7 @@ function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
       content: shortcut.keys,
       placement: shortcut.placement || "top",
       multiple: true,
-      delay: 300, // Delay prevents showing tooltip when just passing through target
-      onShow(): void {
-        document.dispatchEvent(new CustomEvent("tooltipshow"));
-      }
+      delay: 300 // Delay prevents showing tooltip when just passing through target
     };
     delegate("body", tippy_config);
   }
@@ -69,16 +66,8 @@ function feature_overlay_info(): void {
   const text = "Press & hold <b>alt</b> to see the available shortcuts";
   const tippy_instance = create_window_tootlitp(text);
 
-  // Auto show with any other tooltip
-  let timer = null;
-  document.addEventListener("tooltipshow", () => {
-    if (!tippy_instance.state.isShown) tippy_instance.show();
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      tippy_instance.hide();
-      timer = null;
-    }, 2000);
-  });
+  tippy_instance.show();
+  setTimeout(() => tippy_instance.hide(2000), 2000);
 }
 
 function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
