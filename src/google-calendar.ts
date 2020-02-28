@@ -20,8 +20,7 @@ init_lts([
   { selector: '.pPTZAe div:nth-child(2) .d29e1c', shortcut: "del", comment: "Delete event" },
   { selector: '.M30cEf', shortcut: "esc", comment: "Close event popup" },
   { selector: '#xCancelBu', shortcut: "esc", placement: "bottom", comment: "Close event page" },
-  // TODO : make something nice for Cmd/Ctrl shortcuts
-  // { selector: '#xSaveBu', shortcut: "Cmd/Ctrl + s", placement: "bottom", comment: "Save event" },
+  { selector: '#xSaveBu', shortcut: "meta + s", placement: "bottom", comment: "Save event" },
   // No button / No tooltip: "z" Undo last action
 
   /* Application */

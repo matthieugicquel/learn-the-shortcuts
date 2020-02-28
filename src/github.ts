@@ -37,8 +37,7 @@ init_lts([
 
   /* Issue and pull request lists */
   { selector: '.btn[data-hotkey="c"]', shortcut: "c", comment: "Create new"},
-  // TODO : add something clean (icons ?) for ctrl + / Meta + shortcuts
-  { selector: '[data-hotkey="Control+/,Meta+/"', shortcut: "ctrl + /", comment: "Focus on issue/PR search"},
+  { selector: '[data-hotkey="Control+/,Meta+/]"', shortcut: "meta + /", comment: "Focus on issue/PR search"},
   { selector: '[data-hotkey="u"]', shortcut: "u", comment: "Filter by author"},
   { selector: '[data-hotkey="l"]', shortcut: "l", comment: "Filter by label"},
   { selector: '[data-hotkey="m"]', shortcut: "m", comment: "Filter by milestone"},

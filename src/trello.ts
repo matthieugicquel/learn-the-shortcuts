@@ -31,8 +31,7 @@ init_lts([
   { selector: '.js-subscribe', shortcut: "s", placement: "right", comment: "Subscribe" },
   { selector: '.js-vote', shortcut: "v", placement: "right", comment: "Vote" },
   { selector: '.js-close-window', shortcut: "esc", placement: "top", comment: "Close window" },
-  // TODO: Make something nice for Cmd/Ctrl shortcuts
-  // { selector: '.js-add-comment', shortcut: "Cmd/Ctrl + Enter" }
+  { selector: '.js-add-comment', shortcut: "meta + Enter" },
 
   /* Card label codes */
   { selector: '.js-select-label[data-color="green"]', shortcut: "1", placement: "left", comment: "Add green label" },
