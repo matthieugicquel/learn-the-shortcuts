@@ -36,7 +36,7 @@ function init_lts(shortcuts_list: Array<Shortcut>): void {
 
 // Has side-effects
 function adapt_shortcuts_to_os(shortcuts_list: Array<Shortcut>): void {
-  const os_key = window.navigator.oscpu.includes("Mac") ? "⌘" : "ctrl";
+  const os_key = window.navigator.platform.includes("Mac") ? "⌘" : "ctrl";
 
   for (let i = 0; i < shortcuts_list.length; i++) {
     const keys = shortcuts_list[i].keys;
