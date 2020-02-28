@@ -1,4 +1,5 @@
-import tippy, { delegate, hideAll, Placement, Instance } from "tippy.js";
+import tippy, { delegate, hideAll } from "tippy.js";
+import { Placement, Instance as TippyInstance } from "tippy.js";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/animations/shift-toward-extreme.css";
@@ -11,15 +12,17 @@ export interface Shortcut {
 }
 type ShortcutsList = Array<Shortcut>;
 
-type TippyElement = Element & { _tippy: Instance };
+type TippyElement = Element & { _tippy: TippyInstance };
 
 /* Shared config and init */
+
 function init_lts(shortcuts: ShortcutsList): void {
   tippy.setDefaultProps({
     // Appearance
     theme: "red",
     flip: false,
     animation: "shift-away",
+    placement: "top",
 
     // Technical
     trigger: "mouseenter", // With the default you see the shortcut when you use it
@@ -54,7 +57,7 @@ function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
     const tippy_config = {
       target: shortcut.selector,
       content: shortcut.keys,
-      placement: shortcut.placement || "top",
+      placement: shortcut.placement,
       multiple: true,
       delay: 300 // Delay prevents showing tooltip when just passing through target
     };
@@ -77,44 +80,55 @@ function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
   const esc_tippy_instance = create_window_tootlitp(esc_text);
 
   document.addEventListener("keydown", event => {
-    if (keydown) return;
-    if (event.key != "Alt") return;
+    if (keydown || event.key != "Alt") return;
     keydown = true;
-
-    const text_zone_selector = 'input, textarea, [contenteditable="true"]';
-    if (document.activeElement.matches(text_zone_selector)) {
-      esc_tippy_instance.show();
-    }
-
-    for (const shortcut of shortcuts) {
-      const elements: NodeListOf<TippyElement> = document.querySelectorAll(
-        shortcut.selector
-      );
-      const element = elements[elements.length - 1];
-      if (!element) continue;
-      if (element && element._tippy) {
-        element._tippy.show();
-      } else {
-        const tippy_config = {
-          content: shortcut.keys,
-          placement: shortcut.placement || "top",
-          showOnCreate: true,
-          trigger: "manual"
-        };
-        tippy(element, tippy_config);
-      }
-    }
+    show_overlay();
   });
 
   document.addEventListener("keyup", () => {
     keydown = false;
     hideAll();
   });
+
+  function show_overlay(): void {
+    show_esc_tooltip_if_needed();
+    for (const shortcut of shortcuts) {
+      const elements = get_elements_for_shortcut(shortcut);
+      const element = elements[elements.length - 1]; // Take the last one because it usually give better positionning
+
+      if (!element) {
+        continue;
+      } else if (element._tippy) {
+        element._tippy.show();
+      } else {
+        const tippy_config = {
+          content: shortcut.keys,
+          placement: shortcut.placement,
+          showOnCreate: true,
+          trigger: "manual"
+        };
+        tippy(element, tippy_config);
+      }
+    }
+  }
+
+  function show_esc_tooltip_if_needed(): void {
+    const text_zone_selector = 'input, textarea, [contenteditable="true"]';
+    if (document.activeElement.matches(text_zone_selector)) {
+      esc_tippy_instance.show();
+    }
+  }
 }
 
 /* Internal functions */
 
-function create_window_tootlitp(content: string): Instance {
+function get_elements_for_shortcut(
+  shortcut: Shortcut
+): NodeListOf<TippyElement> {
+  return document.querySelectorAll(shortcut.selector);
+}
+
+function create_window_tootlitp(content: string): TippyInstance {
   return tippy(document.body, {
     content: content,
     arrow: false,
