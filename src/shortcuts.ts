@@ -5,7 +5,7 @@ import "tippy.js/animations/shift-toward-extreme.css";
 
 export interface Shortcut {
   selector: string;
-  shortcut: string;
+  keys: string;
   comment: string;
   placement?: Placement;
 }
@@ -39,9 +39,9 @@ function adapt_shortcuts_to_os(shortcuts_list: Array<Shortcut>): void {
   const os_key = window.navigator.oscpu.includes("Mac") ? "⌘" : "ctrl";
 
   for (let i = 0; i < shortcuts_list.length; i++) {
-    const keys = shortcuts_list[i].shortcut;
+    const keys = shortcuts_list[i].keys;
     if (keys.includes("meta")) {
-      shortcuts_list[i].shortcut = keys.replace("meta", os_key);
+      shortcuts_list[i].keys = keys.replace("meta", os_key);
     }
   }
 }
@@ -49,11 +49,11 @@ function adapt_shortcuts_to_os(shortcuts_list: Array<Shortcut>): void {
 /* Features */
 
 function feature_show_tooltips_on_hover(shortcuts: Array<Shortcut>): void {
-  for (const shortcut_item of shortcuts) {
+  for (const shortcut of shortcuts) {
     const tippy_config = {
-      target: shortcut_item.selector,
-      content: shortcut_item.shortcut,
-      placement: shortcut_item.placement || "top",
+      target: shortcut.selector,
+      content: shortcut.keys,
+      placement: shortcut.placement || "top",
       multiple: true,
       onShow(): void {
         document.dispatchEvent(new CustomEvent("tooltipshow"));
@@ -95,9 +95,9 @@ function feature_shortcuts_overlay(shortcuts: Array<Shortcut>): void {
     keydown = true;
     document.dispatchEvent(new CustomEvent("tooltipshow"));
 
-    for (const shortcut_item of shortcuts) {
+    for (const shortcut of shortcuts) {
       const elements: NodeListOf<TippyElement> = document.querySelectorAll(
-        shortcut_item.selector
+        shortcut.selector
       );
       const element = elements[elements.length - 1];
       if (!element) continue;
@@ -105,8 +105,8 @@ function feature_shortcuts_overlay(shortcuts: Array<Shortcut>): void {
         element._tippy.show();
       } else {
         const tippy_config = {
-          content: shortcut_item.shortcut,
-          placement: shortcut_item.placement || "top",
+          content: shortcut.keys,
+          placement: shortcut.placement || "top",
           showOnCreate: true,
           trigger: "manual"
         };
