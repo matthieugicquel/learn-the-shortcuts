@@ -56,6 +56,7 @@ function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
       content: shortcut.keys,
       placement: shortcut.placement || "top",
       multiple: true,
+      delay: 300, // Delay prevents showing tooltip when just passing through target
       onShow(): void {
         document.dispatchEvent(new CustomEvent("tooltipshow"));
       }
