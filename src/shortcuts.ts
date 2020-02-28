@@ -1,5 +1,10 @@
 import tippy, { delegate, hideAll } from "tippy.js";
-import { Placement, Instance as TippyInstance } from "tippy.js";
+import {
+  Placement,
+  Instance as TippyInstance,
+  Props as TippyProps
+} from "tippy.js";
+
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/animations/shift-toward-extreme.css";
@@ -22,13 +27,13 @@ function init_lts(shortcuts: ShortcutsList): void {
     theme: "red",
     flip: false,
     animation: "shift-away",
-    placement: "top",
 
     // Technical
     trigger: "mouseenter", // With the default you see the shortcut when you use it
     appendTo: document.body,
     boundary: "viewport",
-    ignoreAttributes: true
+    ignoreAttributes: true,
+    multiple: true
   });
 
   adapt_shortcuts_to_os(shortcuts);
@@ -55,10 +60,8 @@ function adapt_shortcuts_to_os(shortcuts: ShortcutsList): void {
 function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
   for (const shortcut of shortcuts) {
     const tippy_config = {
+      ...tippy_config_for_shortcut(shortcut),
       target: shortcut.selector,
-      content: shortcut.keys,
-      placement: shortcut.placement,
-      multiple: true,
       delay: 300 // Delay prevents showing tooltip when just passing through target
     };
     delegate("body", tippy_config);
@@ -102,8 +105,7 @@ function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
         element._tippy.show();
       } else {
         const tippy_config = {
-          content: shortcut.keys,
-          placement: shortcut.placement,
+          ...tippy_config_for_shortcut(shortcut),
           showOnCreate: true,
           trigger: "manual"
         };
@@ -122,6 +124,13 @@ function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
 
 /* Internal functions */
 
+function tippy_config_for_shortcut(shortcut: Shortcut): Partial<TippyProps> {
+  return {
+    content: shortcut.keys,
+    placement: shortcut.placement || "top"
+  };
+}
+
 function get_elements_for_shortcut(
   shortcut: Shortcut
 ): NodeListOf<TippyElement> {
@@ -135,8 +144,7 @@ function create_window_tootlitp(content: string): TippyInstance {
     animation: "shift-toward-extreme",
     placement: "bottom",
     trigger: "manual",
-    theme: "overlayinfo",
-    multiple: true
+    theme: "overlayinfo"
   });
 }
 
