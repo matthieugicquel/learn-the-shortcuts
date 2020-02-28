@@ -9,11 +9,12 @@ export interface Shortcut {
   comment: string;
   placement?: Placement;
 }
+type ShortcutsList = Array<Shortcut>;
 
 type TippyElement = Element & { _tippy: Instance };
 
 /* Shared config and init */
-function init_lts(shortcuts_list: Array<Shortcut>): void {
+function init_lts(shortcuts: ShortcutsList): void {
   tippy.setDefaultProps({
     // Appearance
     theme: "red",
@@ -27,28 +28,28 @@ function init_lts(shortcuts_list: Array<Shortcut>): void {
     ignoreAttributes: true
   });
 
-  adapt_shortcuts_to_os(shortcuts_list);
+  adapt_shortcuts_to_os(shortcuts);
 
-  feature_show_tooltips_on_hover(shortcuts_list);
+  feature_show_tooltips_on_hover(shortcuts);
   feature_overlay_info();
-  feature_shortcuts_overlay(shortcuts_list);
+  feature_shortcuts_overlay(shortcuts);
 }
 
 // Has side-effects
-function adapt_shortcuts_to_os(shortcuts_list: Array<Shortcut>): void {
+function adapt_shortcuts_to_os(shortcuts: ShortcutsList): void {
   const os_key = window.navigator.platform.includes("Mac") ? "⌘" : "ctrl";
 
-  for (let i = 0; i < shortcuts_list.length; i++) {
-    const keys = shortcuts_list[i].keys;
+  for (let i = 0; i < shortcuts.length; i++) {
+    const keys = shortcuts[i].keys;
     if (keys.includes("meta")) {
-      shortcuts_list[i].keys = keys.replace("meta", os_key);
+      shortcuts[i].keys = keys.replace("meta", os_key);
     }
   }
 }
 
 /* Features */
 
-function feature_show_tooltips_on_hover(shortcuts: Array<Shortcut>): void {
+function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
   for (const shortcut of shortcuts) {
     const tippy_config = {
       target: shortcut.selector,
@@ -86,7 +87,7 @@ function feature_overlay_info(): void {
   });
 }
 
-function feature_shortcuts_overlay(shortcuts: Array<Shortcut>): void {
+function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
   let keydown = false; // onkeydown fires multiple times
 
   document.addEventListener("keydown", event => {
