@@ -27,9 +27,23 @@ function init_lts(shortcuts_list: Array<Shortcut>): void {
     ignoreAttributes: true
   });
 
+  adapt_shortcuts_to_os(shortcuts_list);
+
   feature_show_tooltips_on_hover(shortcuts_list);
   feature_overlay_info();
   feature_shortcuts_overlay(shortcuts_list);
+}
+
+// Has side-effects
+function adapt_shortcuts_to_os(shortcuts_list: Array<Shortcut>): void {
+  const os_key = window.navigator.oscpu.includes("Mac") ? "⌘" : "ctrl";
+
+  for (let i = 0; i < shortcuts_list.length; i++) {
+    const keys = shortcuts_list[i].shortcut;
+    if (keys.includes("meta")) {
+      shortcuts_list[i].shortcut = keys.replace("meta", os_key);
+    }
+  }
 }
 
 /* Features */
