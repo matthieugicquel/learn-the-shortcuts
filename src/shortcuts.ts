@@ -66,15 +66,8 @@ function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
 }
 
 function feature_overlay_info(): void {
-  const tippy_instance = tippy(document.body, {
-    content: "Press & hold <b>alt</b> to see the available shortcuts",
-    arrow: false,
-    animation: "shift-toward-extreme",
-    placement: "bottom",
-    trigger: "manual",
-    theme: "overlayinfo",
-    multiple: true
-  });
+  const text = "Press & hold <b>alt</b> to see the available shortcuts";
+  const tippy_instance = create_window_tootlitp(text);
 
   // Auto show with any other tooltip
   let timer = null;
@@ -91,11 +84,18 @@ function feature_overlay_info(): void {
 function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
   let keydown = false; // onkeydown fires multiple times
 
+  const esc_text = "Press <b>esc</b> to leave this text zone";
+  const esc_tippy_instance = create_window_tootlitp(esc_text);
+
   document.addEventListener("keydown", event => {
     if (keydown) return;
     if (event.key != "Alt") return;
     keydown = true;
-    document.dispatchEvent(new CustomEvent("tooltipshow"));
+
+    const text_zone_selector = 'input, textarea, [contenteditable="true"]';
+    if (document.activeElement.matches(text_zone_selector)) {
+      esc_tippy_instance.show();
+    }
 
     for (const shortcut of shortcuts) {
       const elements: NodeListOf<TippyElement> = document.querySelectorAll(
@@ -120,6 +120,20 @@ function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
   document.addEventListener("keyup", () => {
     keydown = false;
     hideAll();
+  });
+}
+
+/* Internal functions */
+
+function create_window_tootlitp(content: string): Instance {
+  return tippy(document.body, {
+    content: content,
+    arrow: false,
+    animation: "shift-toward-extreme",
+    placement: "bottom",
+    trigger: "manual",
+    theme: "overlayinfo",
+    multiple: true
   });
 }
 
