@@ -9,47 +9,43 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/animations/shift-toward-extreme.css";
 
-export interface Shortcut {
+/* Types */
+
+interface Shortcut {
   selector: string;
   keys: string;
   comment: string;
   placement?: Placement;
 }
 type ShortcutsList = Array<Shortcut>;
-
 type TippyElement = Element & { _tippy: TippyInstance };
 
 /* Shared config and init */
 
 function init_lts(shortcuts: ShortcutsList): void {
+  configure_tippy();
+  adapt_shortcuts_to_os(shortcuts);
+
+  feature_overlay_info();
+  feature_overlay(shortcuts);
+  feature_show_tooltips_on_hover(shortcuts);
+}
+
+function configure_tippy(): void {
   tippy.setDefaultProps({
-    // Appearance
     theme: "red",
     animation: "shift-away",
-
-    // Technical
-    trigger: "mouseenter", // With the default you see the shortcut when you use it
-    appendTo: document.body,
+    trigger: "mouseenter",
     ignoreAttributes: true,
     allowHTML: true
   });
-
-  adapt_shortcuts_to_os(shortcuts);
-
-  feature_show_tooltips_on_hover(shortcuts);
-  feature_overlay_info();
-  feature_shortcuts_overlay(shortcuts);
 }
 
-// Has side-effects
 function adapt_shortcuts_to_os(shortcuts: ShortcutsList): void {
   const os_key = window.navigator.platform.includes("Mac") ? "⌘" : "ctrl";
-
-  for (let i = 0; i < shortcuts.length; i++) {
-    const keys = shortcuts[i].keys;
-    if (keys.includes("meta")) {
-      shortcuts[i].keys = keys.replace("meta", os_key);
-    }
+  for (const shortcut of shortcuts) {
+    if (!shortcut.keys.includes("meta")) continue;
+    shortcut.keys = shortcut.keys.replace("meta", os_key);
   }
 }
 
@@ -73,11 +69,8 @@ function feature_overlay_info(): void {
   setTimeout(tippy_instance.hide, 2000);
 }
 
-function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
+function feature_overlay(shortcuts: ShortcutsList): void {
   let keydown = false; // onkeydown fires multiple times
-
-  const esc_text = "Press <b>esc</b> to leave this text zone";
-  const esc_tippy_instance = create_window_tootlitp(esc_text);
 
   document.addEventListener("keydown", event => {
     if (keydown || event.key != "Alt") return;
@@ -93,7 +86,7 @@ function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
   function show_overlay(): void {
     show_esc_tooltip_if_needed();
     for (const shortcut of shortcuts) {
-      const elements = get_elements_for_shortcut(shortcut);
+      const elements = elements_for_shortcut(shortcut);
       const element = elements[elements.length - 1]; // Take the last one because it usually give better positionning
 
       if (!element) {
@@ -110,11 +103,13 @@ function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
     }
   }
 
+  const esc_text = "Press <b>esc</b> to leave this text zone";
+  const esc_tippy_instance = create_window_tootlitp(esc_text);
+  const text_zone_selector = 'input, textarea, [contenteditable="true"]';
+
   function show_esc_tooltip_if_needed(): void {
-    const text_zone_selector = 'input, textarea, [contenteditable="true"]';
-    if (document.activeElement.matches(text_zone_selector)) {
-      esc_tippy_instance.show();
-    }
+    if (!document.activeElement.matches(text_zone_selector)) return;
+    esc_tippy_instance.show();
   }
 }
 
@@ -127,22 +122,20 @@ function tippy_config_for_shortcut(shortcut: Shortcut): Partial<TippyProps> {
   };
 }
 
-function get_elements_for_shortcut(
-  shortcut: Shortcut
-): NodeListOf<TippyElement> {
+function elements_for_shortcut(shortcut: Shortcut): NodeListOf<TippyElement> {
   return document.querySelectorAll(shortcut.selector);
 }
 
 function create_window_tootlitp(content: string): TippyInstance {
   return tippy(document.body, {
     content: content,
-    arrow: false,
+    theme: "window",
     animation: "shift-toward-extreme",
+    arrow: false,
     duration: [300, 1500],
     placement: "bottom",
     trigger: "manual",
-    offset: [0, -50], // HACK : did not find proper solution to show tooltip *inside* element
-    theme: "overlayinfo"
+    offset: [0, -50] // HACK : did not find proper solution to show tooltip *inside* element
   });
 }
 

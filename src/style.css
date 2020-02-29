@@ -28,12 +28,12 @@
 }
 
 /* Tippy overlay info Theme */
-.tippy-box[data-theme~="overlayinfo"] {
+.tippy-box[data-theme~="window"] {
   background-color: whitesmoke;
   border: solid #da4620 1px;
   color: #4d4d4d;
 }
-.tippy-box[data-theme~="overlayinfo"] b {
+.tippy-box[data-theme~="window"] b {
   font-weight: bold;
   font-size: 150%;
   border: solid #4d4d4d 1px;
