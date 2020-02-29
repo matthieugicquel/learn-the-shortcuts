@@ -1,6 +1,5 @@
 import { emptyDir } from "rollup-plugin-empty-dir";
 import { chromeExtension, pushReloader } from "rollup-plugin-chrome-extension";
-import { eslint } from "rollup-plugin-eslint";
 import typescript from "@rollup/plugin-typescript";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -21,7 +20,6 @@ export default {
   plugins: [
     emptyDir(),
     chromeExtension({ dynamicImportWrapper: false }), // dynamic import wrapper is not compatible with FF
-    eslint({ fix: true, throwOnError: true }),
     typescript(),
     !production && pushReloader(),
     resolve(),

@@ -10,13 +10,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "yarn lint && rollup -c",
     "watch": "rollup -cw",
     "lint": "eslint . --ext .js,.ts",
     "create-icons": "for x in 16 48 128 ; do inkscape -z src/icons/logo.svg -o src/icons/logo-${x}.png -w ${x}  ; done"
   },
   "dependencies": {
-    "tippy.js": "^5.2.1"
+    "tippy.js": "^6.0.0-alpha.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
@@ -32,7 +32,6 @@
     "rollup-plugin-chrome-extension": "^2.1.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-empty-dir": "^1.0.4",
-    "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-iife": "^0.3.1",
     "rollup-plugin-postcss": "^2.1.1",
     "rollup-plugin-replace": "^2.2.0",

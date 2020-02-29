@@ -25,15 +25,13 @@ function init_lts(shortcuts: ShortcutsList): void {
   tippy.setDefaultProps({
     // Appearance
     theme: "red",
-    flip: false,
     animation: "shift-away",
 
     // Technical
     trigger: "mouseenter", // With the default you see the shortcut when you use it
     appendTo: document.body,
-    boundary: "viewport",
     ignoreAttributes: true,
-    multiple: true
+    allowHTML: true
   });
 
   adapt_shortcuts_to_os(shortcuts);
@@ -61,8 +59,7 @@ function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
   for (const shortcut of shortcuts) {
     const tippy_config = {
       ...tippy_config_for_shortcut(shortcut),
-      target: shortcut.selector,
-      delay: 300 // Delay prevents showing tooltip when just passing through target
+      target: shortcut.selector
     };
     delegate("body", tippy_config);
   }
@@ -73,7 +70,7 @@ function feature_overlay_info(): void {
   const tippy_instance = create_window_tootlitp(text);
 
   tippy_instance.show();
-  setTimeout(() => tippy_instance.hide(2000), 2000);
+  setTimeout(tippy_instance.hide, 2000);
 }
 
 function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
@@ -106,8 +103,7 @@ function feature_shortcuts_overlay(shortcuts: ShortcutsList): void {
       } else {
         const tippy_config = {
           ...tippy_config_for_shortcut(shortcut),
-          showOnCreate: true,
-          trigger: "manual"
+          showOnCreate: true
         };
         tippy(element, tippy_config);
       }
@@ -142,8 +138,10 @@ function create_window_tootlitp(content: string): TippyInstance {
     content: content,
     arrow: false,
     animation: "shift-toward-extreme",
+    duration: [300, 1500],
     placement: "bottom",
     trigger: "manual",
+    offset: [0, -50], // HACK : did not find proper solution to show tooltip *inside* element
     theme: "overlayinfo"
   });
 }
