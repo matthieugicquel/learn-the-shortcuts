@@ -16,6 +16,7 @@ interface Shortcut {
   keys: string;
   comment: string;
   placement?: Placement;
+  usable?: "always" | "whenTyping" | "whenNotTyping";
 }
 type ShortcutsList = Array<Shortcut>;
 type TippyElement = Element & { _tippy: TippyInstance };
@@ -24,11 +25,13 @@ type TippyElement = Element & { _tippy: TippyInstance };
 
 function init_lts(shortcuts: ShortcutsList): void {
   configure_tippy();
+  set_default_usable_values(shortcuts);
   adapt_shortcuts_to_os(shortcuts);
 
   feature_overlay_info();
   feature_overlay(shortcuts);
   feature_show_tooltips_on_hover(shortcuts);
+  feature_grey_disabled_shortcuts();
 }
 
 function configure_tippy(): void {
@@ -39,6 +42,19 @@ function configure_tippy(): void {
     ignoreAttributes: true,
     allowHTML: true
   });
+}
+
+function set_default_usable_values(shortcuts: ShortcutsList): void {
+  for (const shortcut of shortcuts) {
+    if (shortcut.usable) continue;
+    const keys = shortcut.keys;
+    if (
+      !keys.includes("meta") &&
+      !keys.includes("ctrl") &&
+      !keys.includes("esc")
+    )
+      shortcut.usable = "whenNotTyping";
+  }
 }
 
 function adapt_shortcuts_to_os(shortcuts: ShortcutsList): void {
@@ -113,12 +129,33 @@ function feature_overlay(shortcuts: ShortcutsList): void {
   }
 }
 
+function feature_grey_disabled_shortcuts(): void {
+  document.addEventListener("focusin", on_focus_change);
+  document.addEventListener("focusout", on_focus_change);
+  document.addEventListener("keypress", event => {
+    if (event.key === "Escape") on_focus_change();
+  });
+
+  function on_focus_change(): void {
+    const text_zone_selector = 'input, textarea, [contenteditable="true"]';
+    const focused_element = document.activeElement;
+    if (focused_element.matches(text_zone_selector)) {
+      document.body.classList.add("lts-typing");
+    } else document.body.classList.remove("lts-typing");
+  }
+}
+
 /* Internal functions */
 
 function tippy_config_for_shortcut(shortcut: Shortcut): Partial<TippyProps> {
+  const themes = ["red"];
+  if (shortcut.usable === "whenNotTyping") themes.push("disable-when-typing");
+  if (shortcut.usable === "whenTyping") themes.push("disable-when-not-typing");
+
   return {
     content: shortcut.keys,
-    placement: shortcut.placement || "top"
+    placement: shortcut.placement || "top",
+    theme: themes.join(" ")
   };
 }
 

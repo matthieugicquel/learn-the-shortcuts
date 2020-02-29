@@ -27,6 +27,30 @@
   border-right-color: #da4620;
 }
 
+/* Theme for disabled tooltips */
+
+body.lts-typing .tippy-box[data-theme~="disable-when-typing"],
+body:not(.lts-typing) .tippy-box[data-theme~="disable-when-not-typing"] {
+  background-color: darkgray;
+}
+
+body.lts-typing .tippy-box[data-theme~="disable-when-typing"][data-placement^="top"] .tippy-arrow::before,
+body:not(.lts-typing) .tippy-box[data-theme~="disable-when-not-typing"][data-placement^="top"] .tippy-arrow::before  {
+  border-top-color: darkgray;
+}
+body.lts-typing .tippy-box[data-theme~="disable-when-typing"][data-placement^="bottom"] .tippy-arrow::before,
+body:not(.lts-typing) .tippy-box[data-theme~="disable-when-not-typing"][data-placement^="bottom"] .tippy-arrow::before  {
+  border-bottom-color: darkgray;
+}
+body.lts-typing .tippy-box[data-theme~="disable-when-typing"][data-placement^="left"] .tippy-arrow::before,
+body:not(.lts-typing) .tippy-box[data-theme~="disable-when-not-typing"][data-placement^="left"] .tippy-arrow::before  {
+  border-left-color: darkgray;
+}
+body.lts-typing .tippy-box[data-theme~="disable-when-typing"][data-placement^="right"] .tippy-arrow::before,
+body:not(.lts-typing) .tippy-box[data-theme~="disable-when-not-typing"][data-placement^="right"] .tippy-arrow::before  {
+  border-right-color: darkgray;
+}
+
 /* Tippy overlay info Theme */
 .tippy-box[data-theme~="window"] {
   background-color: whitesmoke;
