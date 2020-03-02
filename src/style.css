@@ -1,5 +1,5 @@
 /* Tippy theme */
-[data-tippy-root][data-popper-reference-hidden] {
+.tippy-box[data-reference-hidden] {
   opacity: 0;
 }
 
