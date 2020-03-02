@@ -172,7 +172,16 @@ function create_window_tootlitp(content: string): TippyInstance {
     duration: [300, 1500],
     placement: "bottom",
     trigger: "manual",
-    offset: [0, -50] // HACK : did not find proper solution to show tooltip *inside* element
+    // HACK : did not find proper solution to show tooltip *inside* element
+    getReferenceClientRect: () => ({
+      width: window.innerWidth,
+      height: window.innerHeight - 60,
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0
+    }),
+    popperOptions: { strategy: "fixed" }
   });
 }
 
