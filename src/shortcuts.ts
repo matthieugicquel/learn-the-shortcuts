@@ -122,10 +122,9 @@ function feature_overlay(shortcuts: ShortcutsList): void {
 
   const esc_text = "Press <b>esc</b> to leave this text zone";
   const esc_tippy_instance = create_window_tootlitp(esc_text);
-  const text_zone_selector = 'input, textarea, [contenteditable="true"]';
 
   function show_esc_tooltip_if_needed(): void {
-    if (!document.activeElement.matches(text_zone_selector)) return;
+    if (!document.body.classList.contains("lts-typing")) return;
     esc_tippy_instance.show();
   }
 }
