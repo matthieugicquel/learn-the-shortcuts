@@ -5,6 +5,7 @@ import {
   Props as TippyProps
 } from "tippy.js";
 
+import "./style.css";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import "tippy.js/animations/shift-toward-extreme.css";

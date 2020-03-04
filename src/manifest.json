@@ -11,9 +11,6 @@
       "matches": [
         "https://mail.google.com/*"
       ],
-      "css": [
-        "style.css"
-      ],
       "js": [
         "shortcuts.ts",
         "gmail.ts"
@@ -22,9 +19,6 @@
     {
       "matches": [
         "https://github.com/*"
-      ],
-      "css": [
-        "style.css"
       ],
       "js": [
         "shortcuts.ts",
@@ -35,9 +29,6 @@
       "matches": [
         "https://trello.com/*"
       ],
-      "css": [
-        "style.css"
-      ],
       "js": [
         "shortcuts.ts",
         "trello.ts"
@@ -46,9 +37,6 @@
     {
       "matches": [
         "https://calendar.google.com/*"
-      ],
-      "css": [
-        "style.css"
       ],
       "js": [
         "shortcuts.ts",

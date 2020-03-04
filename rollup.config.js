@@ -8,6 +8,8 @@ import replace from "rollup-plugin-replace";
 import iife from "rollup-plugin-iife";
 import zip from "rollup-plugin-zip";
 
+import postcss_url from "postcss-url";
+
 // We consider it's production if we're not watching
 const production = !process.env.ROLLUP_WATCH;
 
@@ -24,7 +26,9 @@ export default {
     !production && pushReloader(),
     resolve(),
     commonjs(),
-    postcss(),
+    postcss({
+      plugins: [postcss_url({ url: "inline" })]
+    }),
     iife(),
     replace({
       "process.env.NODE_ENV": JSON.stringify(

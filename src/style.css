@@ -1,3 +1,12 @@
+/* Fonts */
+@font-face {
+  font-family: 'open-arrow';
+  src: url('./fonts/OpenArrow-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  unicode-range: U+2190-21ff;
+}
+
 /* Tippy theme */
 .tippy-box[data-reference-hidden] {
   opacity: 0;
@@ -7,7 +16,7 @@
   background-color: #da4620;
   cursor: not-allowed;
   font-size: 12px;
-  font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+  font-family: 'open-arrow', Helvetica,Arial,sans-serif;
 }
 
 .tippy-box[data-theme~="red"] .tippy-arrow::before {
