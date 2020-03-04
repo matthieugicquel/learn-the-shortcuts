@@ -88,14 +88,13 @@ function feature_overlay_info(): void {
 
 function feature_overlay(shortcuts: ShortcutsList): void {
   let keydown = false; // onkeydown fires multiple times
-
-  document.addEventListener("keydown", event => {
+  add_document_event_listener("keydown", (event: KeyboardEvent) => {
     if (keydown || event.key != "Alt") return;
     keydown = true;
     show_overlay();
   });
 
-  document.addEventListener("keyup", () => {
+  add_document_event_listener("keyup", () => {
     keydown = false;
     hideAll();
   });
@@ -130,9 +129,9 @@ function feature_overlay(shortcuts: ShortcutsList): void {
 }
 
 function feature_grey_disabled_shortcuts(): void {
-  document.addEventListener("focusin", on_focus_change);
-  document.addEventListener("focusout", on_focus_change);
-  document.addEventListener("keypress", event => {
+  add_document_event_listener("focusin", on_focus_change);
+  add_document_event_listener("focusout", on_focus_change);
+  add_document_event_listener("keypress", (event: KeyboardEvent) => {
     if (event.key === "Escape") on_focus_change();
   });
 
@@ -161,6 +160,13 @@ function tippy_config_for_shortcut(shortcut: Shortcut): Partial<TippyProps> {
 
 function elements_for_shortcut(shortcut: Shortcut): NodeListOf<TippyElement> {
   return document.querySelectorAll(shortcut.selector);
+}
+
+function add_document_event_listener(
+  type: string,
+  callback: EventListenerOrEventListenerObject
+): void {
+  document.addEventListener(type, callback, { capture: true, passive: true });
 }
 
 function create_window_tootlitp(content: string): TippyInstance {
