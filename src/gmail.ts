@@ -39,11 +39,11 @@ init_lts([
   { selector: ".bkG", keys: "f", placement: "top", comment: "Forward (bottom of conversation)" },
 
   /* Message composition */
-  { selector: ".pE", keys:"meta ⇧ c", placement: "left", comment: "Add Cc recipients" },
-  { selector: ".pB", keys:"meta ⇧ b", placement: "right", comment: "Add Bcc recipients" },
-  { selector: ".og", keys: "meta ⇧ d", comment: "Discard Draft" },
-  { selector: ".aoO", keys: "meta ↩", comment: "Send" },
-  { selector: ".Hl ~ .Ha", keys: "esc", comment: "Save & close" },
+  { selector: ".pE", keys:"meta ⇧ c", usable:"whenTyping",placement: "left", comment: "Add Cc recipients" },
+  { selector: ".pB", keys:"meta ⇧ b", usable:"whenTyping", placement: "right", comment: "Add Bcc recipients" },
+  { selector: ".og", keys: "meta ⇧ d", usable:"whenTyping", comment: "Discard Draft" },
+  { selector: ".aoO", keys: "meta ↩", usable:"whenTyping", comment: "Send" },
+  { selector: ".Hl ~ .Ha", keys: "esc", usable:"whenTyping", comment: "Save & close" },
 
   /* Misc */
   { selector: 'form[role="search"] .gb_uf', keys: "/", placement: "right", comment: "Search" },
