@@ -35,6 +35,6 @@ export default {
         production ? "production" : "development"
       )
     }),
-    zip({ dir: "dist" })
+    zip({ file: `../${process.env.npm_package_name}.zip` })
   ]
 };
