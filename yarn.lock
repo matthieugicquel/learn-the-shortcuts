@@ -2933,10 +2933,10 @@ rimraf@^2.6.1:
   dependencies:
     glob "^7.1.3"
 
-rollup-plugin-chrome-extension@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-chrome-extension/-/rollup-plugin-chrome-extension-2.1.0.tgz#d5d3edee3164e031d480433e652eaf7cf472adef"
-  integrity sha512-mefHCCbQLwy+k0rsotV0w3c8w5G8BgI/TxMTDnztEPhNWpw1AMToHF2+8siwJ3bBkd4oAzX5yDQMHZT+nzhZsA==
+rollup-plugin-chrome-extension@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-chrome-extension/-/rollup-plugin-chrome-extension-2.1.3.tgz#5436b8a1e4d358b524ef4c46a5391321309c99eb"
+  integrity sha512-KTwt6IGORukPfaOzJESPRM62RO1V/pD98tMpZscwyMp05XtDzYB9256XbG7f62KgR6O4WLhHFPDphbIEkrn3LA==
   dependencies:
     "@bumble/chrome-rxjs" "^0.10.1"
     ajv "^6.11.0"
