@@ -4,7 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import postcss from "rollup-plugin-postcss";
-import replace from "rollup-plugin-replace";
+import replace from "@rollup/plugin-replace";
 import iife from "rollup-plugin-iife";
 import zip from "rollup-plugin-zip";
 
