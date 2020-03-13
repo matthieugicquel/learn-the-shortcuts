@@ -16,7 +16,7 @@
   background-color: #da4620;
   cursor: not-allowed;
   font-size: 12px;
-  font-family: 'open-arrow', Helvetica,Arial,sans-serif;
+  font-family: 'open-arrow', system-ui, Arial, Helvetica, sans-serif;
 }
 
 .tippy-box[data-theme~="red"] .tippy-arrow::before {

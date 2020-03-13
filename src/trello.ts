@@ -31,7 +31,7 @@ init_lts([
   { selector: '.js-subscribe', keys: "s", placement: "right", comment: "Subscribe" },
   { selector: '.js-vote', keys: "v", placement: "right", comment: "Vote" },
   { selector: '.js-close-window', keys: "esc", placement: "top", comment: "Close window" },
-  { selector: '.js-add-comment', keys: "meta + Enter", usable: "whenTyping", placement: "bottom", comment: "Add comment" },
+  { selector: '.js-add-comment', keys: "meta ↩", usable: "whenTyping", placement: "bottom", comment: "Add comment" },
 
   /* Card label codes */
   { selector: '.js-select-label[data-color="green"]', keys: "1", placement: "left", comment: "Add green label" },

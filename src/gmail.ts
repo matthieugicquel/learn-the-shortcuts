@@ -40,10 +40,10 @@ init_lts([
   { selector: ".bkG", keys: "f", placement: "top", comment: "Forward (bottom of conversation)" },
 
   /* Message composition */
-  { selector: ".pE", keys:"meta⇧c", placement: "left", comment: "Add Cc recipients" },
-  { selector: ".pB", keys:"meta⇧b", placement: "right", comment: "Add Bcc recipients" },
-  { selector: ".og", keys: "meta⇧d", comment: "Discard Draft" },
-  { selector: ".aoO", keys: "meta↩", comment: "Send" },
+  { selector: ".pE", keys:"meta ⇧ c", placement: "left", comment: "Add Cc recipients" },
+  { selector: ".pB", keys:"meta ⇧ b", placement: "right", comment: "Add Bcc recipients" },
+  { selector: ".og", keys: "meta ⇧ d", comment: "Discard Draft" },
+  { selector: ".aoO", keys: "meta ↩", comment: "Send" },
   { selector: ".Hl ~ .Ha", keys: "esc", comment: "Save & close" },
 
   /* Misc */

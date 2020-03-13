@@ -20,7 +20,7 @@ init_lts([
   { selector: '.pPTZAe div:nth-child(2) .d29e1c', keys: "del", comment: "Delete event" },
   { selector: '.M30cEf', keys: "esc", comment: "Close event popup" },
   { selector: '#xCancelBu', keys: "esc", placement: "bottom", comment: "Close event page" },
-  { selector: '#xSaveBu', keys: "meta + s", placement: "bottom", comment: "Save event" },
+  { selector: '#xSaveBu', keys: "meta s", placement: "bottom", comment: "Save event" },
   // No button / No tooltip: "z" Undo last action
 
   /* Application */
