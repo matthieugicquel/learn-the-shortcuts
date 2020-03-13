@@ -65,6 +65,7 @@ body:not(.lts-typing) .tippy-box[data-theme~="disable-when-not-typing"][data-pla
   background-color: whitesmoke;
   border: solid #da4620 1px;
   color: #4d4d4d;
+  font-family: 'open-arrow', system-ui, Arial, Helvetica, sans-serif;
 }
 .tippy-box[data-theme~="window"] b {
   font-weight: bold;
