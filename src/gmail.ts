@@ -23,14 +23,29 @@ init_lts([
   { selector: '[role="navigation"].ajl .aHS-bnq', keys: "g d", placement: "right", comment: "Drafts" },
   { selector: '[role="navigation"].ajl .aHS-aHO', keys: "g a", placement: "right", comment: "All Mail" },
 
-  /* Misc */
-  { selector: 'form[role="search"]', keys: "/", placement: "right", comment: "Search" },
-  { selector: '[role="grid"] [role="checkbox"]', keys: "x", placement: "left", comment: "Message checkbox" },
-  { selector: ".aXw.T-KT", keys: "s", placement: "right", comment: "Star/unstar (list view)" },
+  /* Message list */
+  // TODO : Disabled until made less intrusive
+  // { selector: '[role="grid"]', keys: "↓j ↑k", placement: "top", comment: "List navigation" },
+  { selector: '[role="grid"] .btb .aXw.T-KT', keys: "s", placement: "right", comment: "Star/unstar (list view)" },
+  { selector: '[role="grid"] .btb [role="checkbox"]', keys: "x", placement: "left", comment: "Message checkbox" },
+  // TODO : Disabled until one stops covering the other
+  // { selector: '.G-as3 .T-Jo:not(.T-Jo-Jp):not(.T-Jo-ayH)', keys: "* a", comment: "Select all messages" },
+  // { selector: '.G-as3 .T-Jo-ayH, .G-as3 .T-Jo-Jp', keys: "* n", comment: "Deselect all messages" },
+
+  /* Message view */
   { selector: ".acZ .T-KT", keys: "s", placement: "top", comment: "Star/unstar (message view)" },
   { selector: ".aaq", keys: "r", placement: "top", comment: "Answer (message view)" },
   { selector: ".bkH", keys: "r", placement: "top", comment: "Answer (bottom of conversation)" },
   { selector: ".bkI", keys: "a", placement: "top", comment: "Answer all (bottom of conversation)" },
-  { selector: ".bkG", keys: "f", placement: "top", comment: "Forward (bottom of conversation)"
-  }
+  { selector: ".bkG", keys: "f", placement: "top", comment: "Forward (bottom of conversation)" },
+
+  /* Message composition */
+  { selector: ".pE", keys:"meta⇧c", placement: "left", comment: "Add Cc recipients" },
+  { selector: ".pB", keys:"meta⇧b", placement: "right", comment: "Add Bcc recipients" },
+  { selector: ".og", keys: "meta⇧d", comment: "Discard Draft" },
+  { selector: ".aoO", keys: "meta↩", comment: "Send" },
+  { selector: ".Hl ~ .Ha", keys: "esc", comment: "Save & close" },
+
+  /* Misc */
+  { selector: 'form[role="search"]', keys: "/", placement: "right", comment: "Search" },
 ]);
