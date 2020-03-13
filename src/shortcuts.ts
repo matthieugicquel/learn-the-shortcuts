@@ -115,8 +115,7 @@ function feature_overlay(shortcuts: ShortcutsList): void {
       } else {
         const tippy_config = {
           ...tippy_config_for_shortcut(shortcut),
-          showOnCreate: true,
-          trigger: "manual"
+          showOnCreate: true
         };
         tippy(element, tippy_config);
       }
@@ -168,6 +167,7 @@ function tippy_config_for_placement(shortcut: Shortcut): Partial<TippyProps> {
   } else {
     return {
       placement: "top",
+      trigger: "manual", // do not show inside shortcuts on mouseover
       arrow: false,
       offset: ({ popper, reference }): [number, number] => {
         const y = -(reference.height + popper.height) / 2;

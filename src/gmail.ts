@@ -46,5 +46,5 @@ init_lts([
   { selector: ".Hl ~ .Ha", keys: "esc", comment: "Save & close" },
 
   /* Misc */
-  { selector: 'form[role="search"] .gb_vf', keys: "/", placement: "right", comment: "Search" },
+  { selector: 'form[role="search"] .gb_uf', keys: "/", placement: "right", comment: "Search" },
 ]);
