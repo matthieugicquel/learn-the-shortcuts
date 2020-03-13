@@ -101,7 +101,8 @@ function feature_overlay(shortcuts: ShortcutsList): void {
   });
 
   function show_overlay(): void {
-    show_esc_tooltip_if_needed();
+    // TODO: Replace this with something that gives accurate information
+    // show_esc_tooltip_if_needed();
     for (const shortcut of shortcuts) {
       const elements = elements_for_shortcut(shortcut);
       const element = elements[elements.length - 1]; // Take the last one because it usually give better positionning
