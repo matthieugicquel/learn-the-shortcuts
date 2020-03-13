@@ -107,6 +107,8 @@ function feature_overlay(shortcuts: ShortcutsList): void {
 
       if (!element) {
         continue;
+      } else if (!is_element_on_top(element)) {
+        continue;
       } else if (element._tippy) {
         element._tippy.show();
       } else {
@@ -160,6 +162,14 @@ function tippy_config_for_shortcut(shortcut: Shortcut): Partial<TippyProps> {
 
 function elements_for_shortcut(shortcut: Shortcut): NodeListOf<TippyElement> {
   return document.querySelectorAll(shortcut.selector);
+}
+
+function is_element_on_top(element: Element): boolean {
+  const rect = element.getBoundingClientRect();
+  const x = rect.x + rect.width / 2;
+  const y = rect.y + rect.height / 2;
+  const element_on_top = document.elementFromPoint(x, y);
+  return element.contains(element_on_top);
 }
 
 function add_document_event_listener(
