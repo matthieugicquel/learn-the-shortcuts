@@ -9,7 +9,7 @@ init_lts([
   /* Site wide shortcuts */
   { selector: 'header [data-hotkey="g d"]', keys: "g d", placement: "bottom", comment: "Home" },
   { selector: 'header [data-hotkey="s,/"]', keys: "s or /", placement: "bottom", comment: "Search" },
-  // Disabled until made "smart" (it gets overriden by repo keyss)
+  // Disabled until made "smart" (it gets overriden by repo keys)
   // { selector: 'header [data-hotkey="g p"]', keys: "g p", placement: "bottom", comment: "Pull requests" },
   // { selector: 'header [data-hotkey="g i"]', keys: "g i", placement: "bottom", comment: "Issues" },
   { selector: 'header [data-hotkey="g n"]', keys: "g n", placement: "bottom", comment: "Notifications" },
@@ -34,18 +34,26 @@ init_lts([
   // { selector: '', keys: "i", comment: "Show/hide comment on diff" },
 
   /* TODO: Comments */
+  { selector: '.composer button[type="submit"]', keys: "meta + Enter", placement: "bottom", usable: "whenTyping", comment: "Submit issue"},
+  { selector: '.js-new-comment-form button[type="submit"]', keys: "ctrl + Enter", placement: "bottom", usable: "whenTyping", comment: "Submit comment"},
+  { selector: '.tabnav-tabs', keys: "meta + ⇧ + p", placement: "left", comment: "Switch between edit & preview"},
+
 
   /* Issue and pull request lists */
-  { selector: '.btn[data-hotkey="c"]', keys: "c", comment: "Create new"},
-  { selector: '[data-hotkey="Control+/,Meta+/]"', keys: "meta + /", comment: "Focus on issue/PR search"},
-  { selector: '[data-hotkey="u"]', keys: "u", comment: "Filter by author"},
-  { selector: '[data-hotkey="l"]', keys: "l", comment: "Filter by label"},
-  { selector: '[data-hotkey="m"]', keys: "m", comment: "Filter by milestone"},
-  { selector: '[data-hotkey="a"]', keys: "a", comment: "Filter by assignee"},
+  { selector: '.btn[data-hotkey="c"]', keys: "c", comment: "Create new" },
+  { selector: '[data-hotkey="Control+/,Meta+/"]', keys: "meta + /", comment: "Focus on issue/PR search" },
+  { selector: '[data-hotkey="u"]', keys: "u", comment: "Filter by author" },
+  { selector: '[data-hotkey="l"]', keys: "l", comment: "Filter by label" },
+  { selector: '[data-hotkey="m"]', keys: "m", comment: "Filter by milestone" },
+  { selector: '[data-hotkey="a"]', keys: "a", comment: "Filter by assignee" },
+  { selector: '.js-navigation-item.navigation-focus [type="checkbox"]', keys: "x", placement: "left", comment: "Check item" },
+  { selector: '.js-navigation-item.navigation-focus', keys: "↓j ↑k", placement: "right", comment: "List navigation" },
+
   // TODO : No way to explain this one for now
   // { selector: '', keys: "alt + click", comment: "Exclude label"},
 
   /* TODO: Issues and pull requests */
+
   /* TODO: Changes in pull requests - These shortcuts don't seem to be working */
   /* TODO: Project boards */
 
