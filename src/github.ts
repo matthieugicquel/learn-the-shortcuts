@@ -47,7 +47,7 @@ init_lts([
   { selector: '[data-hotkey="m"]', keys: "m", comment: "Filter by milestone" },
   { selector: '[data-hotkey="a"]', keys: "a", comment: "Filter by assignee" },
   { selector: '.js-navigation-item.navigation-focus [type="checkbox"]', keys: "x", placement: "left", comment: "Check item" },
-  { selector: '.js-navigation-item.navigation-focus', keys: "↓j ↑k", placement: "right", comment: "List navigation" },
+  { selector: '.js-navigation-item.navigation-focus', keys: "↓j ↑k ↩", placement: "inside", comment: "List navigation" },
 
   // TODO : No way to explain this one for now
   // { selector: '', keys: "alt + click", comment: "Exclude label"},

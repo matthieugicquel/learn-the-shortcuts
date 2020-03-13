@@ -24,8 +24,7 @@ init_lts([
   { selector: '[role="navigation"].ajl .aHS-aHO', keys: "g a", placement: "right", comment: "All Mail" },
 
   /* Message list */
-  // TODO : Disabled until made less intrusive
-  // { selector: '[role="grid"]', keys: "↓j ↑k", placement: "top", comment: "List navigation" },
+  { selector: '[role="grid"] .btb', keys: "↓j ↑k ↩", placement: "inside", comment: "List navigation" },
   { selector: '[role="grid"] .btb .aXw.T-KT', keys: "s", placement: "right", comment: "Star/unstar (list view)" },
   { selector: '[role="grid"] .btb [role="checkbox"]', keys: "x", placement: "left", comment: "Message checkbox" },
   // TODO : Disabled until one stops covering the other

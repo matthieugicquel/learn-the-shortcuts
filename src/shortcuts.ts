@@ -16,7 +16,7 @@ interface Shortcut {
   selector: string;
   keys: string;
   comment: string;
-  placement?: Placement;
+  placement?: Placement | "inside";
   usable?: "always" | "whenTyping" | "whenNotTyping";
 }
 type ShortcutsList = Array<Shortcut>;
@@ -70,6 +70,7 @@ function adapt_shortcuts_to_os(shortcuts: ShortcutsList): void {
 
 function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
   for (const shortcut of shortcuts) {
+    if (shortcut.placement === "inside") continue;
     const tippy_config = {
       ...tippy_config_for_shortcut(shortcut),
       target: shortcut.selector
@@ -114,7 +115,8 @@ function feature_overlay(shortcuts: ShortcutsList): void {
       } else {
         const tippy_config = {
           ...tippy_config_for_shortcut(shortcut),
-          showOnCreate: true
+          showOnCreate: true,
+          trigger: "manual"
         };
         tippy(element, tippy_config);
       }
@@ -155,9 +157,24 @@ function tippy_config_for_shortcut(shortcut: Shortcut): Partial<TippyProps> {
 
   return {
     content: shortcut.keys,
-    placement: shortcut.placement || "top",
-    theme: themes.join(" ")
+    theme: themes.join(" "),
+    ...tippy_config_for_placement(shortcut)
   };
+}
+
+function tippy_config_for_placement(shortcut: Shortcut): Partial<TippyProps> {
+  if (shortcut.placement !== "inside") {
+    return { placement: shortcut.placement || "top" };
+  } else {
+    return {
+      placement: "top",
+      arrow: false,
+      offset: ({ popper, reference }): [number, number] => {
+        const y = -(reference.height + popper.height) / 2;
+        return [0, y];
+      }
+    };
+  }
 }
 
 function elements_for_shortcut(shortcut: Shortcut): NodeListOf<TippyElement> {
