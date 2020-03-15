@@ -33,7 +33,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Version ${{ github.ref }}
 
-      - name: upload build to release
+      - name: Upload build to release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,3 +42,21 @@ jobs:
           asset_path: dist/learn-the-shortcuts.zip
           asset_name: learn-the-shortcuts-${{ github.ref }}.zip
           asset_content_type: application/zip
+
+      - name: Publish to Chrome Web Store
+        uses: trmcnvn/chrome-addon@v2
+        with:
+          extension: glbfdjadjnpcloonbhhjahddhcclimld
+          zip: dist/learn-the-shortcuts.zip
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
+      - name: Publish to Firefox addons workshop
+        uses: trmcnvn/firefox-addon@v1
+        with:
+          uuid: "{6640909c-d3e6-4f5a-845f-1d9b4c3c8f98}"
+          xpi: dist/learn-the-shortcuts.zip
+          manifest: dist/dev/manifest.json
+          api-key: ${{ secrets.FIREFOX_API_KEY }}
+          api-secret: ${{ secrets.FIREFOX_API_SECRET }}
