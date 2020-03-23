@@ -17,7 +17,7 @@ export default {
   input: "src/manifest.json",
   output: {
     dir: "dist/dev",
-    format: "esm"
+    format: "esm",
   },
   plugins: [
     emptyDir(),
@@ -27,14 +27,14 @@ export default {
     resolve(),
     commonjs(),
     postcss({
-      plugins: [postcss_url({ url: "inline" })]
+      plugins: [postcss_url({ url: "inline" })],
     }),
     iife(),
     replace({
       "process.env.NODE_ENV": JSON.stringify(
         production ? "production" : "development"
-      )
+      ),
     }),
-    zip({ file: `../${process.env.npm_package_name}.zip` })
-  ]
+    zip({ file: `../${process.env.npm_package_name}.zip` }),
+  ],
 };
