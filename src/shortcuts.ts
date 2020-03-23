@@ -1,8 +1,8 @@
 import tippy, { delegate, hideAll } from "tippy.js";
-import {
+import type {
   Placement,
   Instance as TippyInstance,
-  Props as TippyProps
+  Props as TippyProps,
 } from "tippy.js";
 
 import "./style.css";
@@ -41,7 +41,7 @@ function configure_tippy(): void {
     animation: "shift-away",
     trigger: "mouseenter",
     ignoreAttributes: true,
-    allowHTML: true
+    allowHTML: true,
   });
 }
 
@@ -73,7 +73,7 @@ function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
     if (shortcut.placement === "inside") continue;
     const tippy_config = {
       ...tippy_config_for_shortcut(shortcut),
-      target: shortcut.selector
+      target: shortcut.selector,
     };
     delegate("body", tippy_config);
   }
@@ -116,20 +116,20 @@ function feature_overlay(shortcuts: ShortcutsList): void {
       } else {
         const tippy_config = {
           ...tippy_config_for_shortcut(shortcut),
-          showOnCreate: true
+          showOnCreate: true,
         };
         tippy(element, tippy_config);
       }
     }
   }
 
-  const esc_text = "Press <b>esc</b> to leave this text zone";
-  const esc_tippy_instance = create_window_tootlitp(esc_text);
+  // const esc_text = "Press <b>esc</b> to leave this text zone";
+  // const esc_tippy_instance = create_window_tootlitp(esc_text);
 
-  function show_esc_tooltip_if_needed(): void {
-    if (!document.body.classList.contains("lts-typing")) return;
-    esc_tippy_instance.show();
-  }
+  // function show_esc_tooltip_if_needed(): void {
+  //   if (!document.body.classList.contains("lts-typing")) return;
+  //   esc_tippy_instance.show();
+  // }
 }
 
 function feature_grey_disabled_shortcuts(): void {
@@ -158,7 +158,7 @@ function tippy_config_for_shortcut(shortcut: Shortcut): Partial<TippyProps> {
   return {
     content: shortcut.keys,
     theme: themes.join(" "),
-    ...tippy_config_for_placement(shortcut)
+    ...tippy_config_for_placement(shortcut),
   };
 }
 
@@ -173,7 +173,7 @@ function tippy_config_for_placement(shortcut: Shortcut): Partial<TippyProps> {
       offset: ({ popper, reference }): [number, number] => {
         const y = -(reference.height + popper.height) / 2;
         return [0, y];
-      }
+      },
     };
   }
 }
@@ -213,9 +213,9 @@ function create_window_tootlitp(content: string): TippyInstance {
       left: 0,
       right: 0,
       top: 0,
-      bottom: 0
+      bottom: 0,
     }),
-    popperOptions: { strategy: "fixed" }
+    popperOptions: { strategy: "fixed" },
   });
 }
 
