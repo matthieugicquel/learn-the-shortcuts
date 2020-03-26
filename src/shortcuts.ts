@@ -40,6 +40,7 @@ function configure_tippy(): void {
     theme: "red",
     animation: "shift-away",
     trigger: "mouseenter",
+    delay: [500, null],
     ignoreAttributes: true,
     allowHTML: true,
   });
