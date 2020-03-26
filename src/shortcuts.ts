@@ -81,6 +81,8 @@ function feature_show_tooltips_on_hover(shortcuts: ShortcutsList): void {
 }
 
 function feature_overlay_info(): void {
+  if (is_same_domain(document.referrer, document.location.href)) return;
+
   const text = "Press & hold <b>alt</b> to see the available shortcuts";
   const tippy_instance = create_window_tootlitp(text);
 
@@ -218,6 +220,10 @@ function create_window_tootlitp(content: string): TippyInstance {
     }),
     popperOptions: { strategy: "fixed" },
   });
+}
+
+function is_same_domain(url1: string, url2: string): boolean {
+  return url1.split("/")[2] === url2.split("/")[2];
 }
 
 export { init_lts };
