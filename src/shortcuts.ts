@@ -110,19 +110,21 @@ function feature_overlay(shortcuts: ShortcutsList): void {
       const elements = elements_for_shortcut(shortcut);
       const element = elements[elements.length - 1]; // Take the last one because it usually give better positionning
 
-      if (!element) {
-        continue;
-      } else if (!is_element_on_top(element)) {
-        continue;
-      } else if (element._tippy) {
-        element._tippy.show();
+      if (!element || !is_element_on_top(element)) continue;
+
+      let instance = element._tippy;
+      if (instance) {
+        instance.setProps({ delay: [0, null] });
+        instance.show();
       } else {
-        const tippy_config = {
+        const tippy_config: Partial<TippyProps> = {
           ...tippy_config_for_shortcut(shortcut),
           showOnCreate: true,
+          delay: [0, null],
         };
-        tippy(element, tippy_config);
+        instance = tippy(element, tippy_config);
       }
+      reset_tippy_delay_soon(instance);
     }
   }
 
@@ -224,6 +226,10 @@ function create_window_tootlitp(content: string): TippyInstance {
 
 function is_same_domain(url1: string, url2: string): boolean {
   return url1.split("/")[2] === url2.split("/")[2];
+}
+
+function reset_tippy_delay_soon(tippy_instance: TippyInstance): void {
+  setTimeout(() => tippy_instance.setProps({ delay: [500, null] }), 0);
 }
 
 export { init_lts };
