@@ -112,8 +112,9 @@ function feature_overlay(shortcuts: ShortcutsList): void {
 
       if (!element || !is_element_on_top(element)) continue;
 
-      let instance = element._tippy;
-      if (instance) {
+      let instance: TippyInstance;
+      if (is_tippy_element(element)) {
+        instance = element._tippy;
         instance.setProps({ delay: [0, null] });
         instance.show();
       } else {
@@ -155,6 +156,12 @@ function feature_grey_disabled_shortcuts(): void {
 
 /* Internal functions */
 
+function is_tippy_element(
+  element: Element | TippyElement
+): element is TippyElement {
+  return (element as TippyElement)._tippy !== undefined;
+}
+
 function tippy_config_for_shortcut(shortcut: Shortcut): Partial<TippyProps> {
   const themes = ["red"];
   if (shortcut.usable === "whenNotTyping") themes.push("disable-when-typing");
@@ -183,8 +190,10 @@ function tippy_config_for_placement(shortcut: Shortcut): Partial<TippyProps> {
   }
 }
 
-function elements_for_shortcut(shortcut: Shortcut): NodeListOf<TippyElement> {
-  return document.querySelectorAll(shortcut.selector);
+function elements_for_shortcut(shortcut: Shortcut): Array<Element> {
+  const elements = [...document.querySelectorAll(shortcut.selector)];
+  const filter = (el: Element): boolean => !!(el as HTMLElement).offsetParent;
+  return elements.filter(filter);
 }
 
 function is_element_on_top(element: Element): boolean {
