@@ -36,7 +36,7 @@
     "rollup-plugin-iife": "^0.3.1",
     "rollup-plugin-postcss": "^2.5.0",
     "rollup-plugin-zip": "^1.0.1",
-    "tslib": "^1.11.1",
+    "tslib": "^1.11.2",
     "typescript": "^3.8.3"
   }
 }
