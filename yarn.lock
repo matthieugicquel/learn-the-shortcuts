@@ -248,10 +248,10 @@
     lodash.camelcase "^4.3.0"
     protobufjs "^6.8.6"
 
-"@popperjs/core@^2.3.2":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.3.3.tgz#8731722aeb7330e8fd9eb5d424be6b98dea7d6da"
-  integrity sha512-yEvVC8RfhRPkD9TUn7cFcLcgoJePgZRAOR7T21rcRY5I8tpuhzeWfGa7We7tB14fe9R7wENdqUABcMdwD4SQLw==
+"@popperjs/core@^2.4.4":
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.4.tgz#11d5db19bd178936ec89cd84519c4de439574398"
+  integrity sha512-1oO6+dN5kdIA3sKPZhRGJTfGVP4SWV6KqlMOwry4J3HfyD68sl/3KmG7DeYUzvN+RbhXDnv/D8vNNB8168tAMg==
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -3466,12 +3466,12 @@ timsort@^0.3.0:
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tippy.js@^6.2.4:
-  version "6.2.4"
-  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.2.4.tgz#b76000080cc035745cab4f20ac7a30e1ccb1b6bb"
-  integrity sha512-S3qLJhx7cpeGDpHw411jU62W1RvOGPkt3r68y8nwPi7wm/aexrSYAADbVb1ZNYCjspEwLWQvtAx76COvPcLvCw==
+tippy.js@^6.2.5:
+  version "6.2.5"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.2.5.tgz#5335e28228af5e22c524fe5e8a94654514f34b92"
+  integrity sha512-UIf8G99PMXGmdWPrr36s/DjQBdfxMPwzvPUXsxs3tDFDTZ1SgvKG+Jvt6RJ+aBqYL0oe/STxh3MNkCV3IWAKmw==
   dependencies:
-    "@popperjs/core" "^2.3.2"
+    "@popperjs/core" "^2.4.4"
 
 tmp@^0.0.33:
   version "0.0.33"
