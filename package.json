@@ -16,7 +16,7 @@
     "create-icons": "for x in 16 48 128 ; do inkscape -z src/icons/logo.svg -o src/icons/logo-${x}.png -w ${x}  ; done"
   },
   "dependencies": {
-    "tippy.js": "^6.2.6"
+    "tippy.js": "^6.2.7"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.1.0",
