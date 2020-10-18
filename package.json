@@ -12,7 +12,7 @@
   "scripts": {
     "build": "yarn lint && rollup -c",
     "watch": "rollup -cw",
-    "lint": "eslint . --ext .js,.ts",
+    "lint": "eslint . --ext .js,.ts --cache",
     "create-icons": "for x in 16 48 128 ; do inkscape -z src/icons/logo.svg -o src/icons/logo-${x}.png -w ${x}  ; done"
   },
   "dependencies": {
