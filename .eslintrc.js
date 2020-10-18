@@ -1,29 +1,29 @@
 module.exports = {
-  "parser": "@typescript-eslint/parser",
+  parser: "@typescript-eslint/parser",
 
-  "extends": [
+  extends: [
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
 
-  "ignorePatterns": ["dist/", "node_modules/"],
-  "parserOptions": {
-    "ecmaVersion": 10,
-    "sourceType": "module"
+  ignorePatterns: ["dist/", "node_modules/"],
+  parserOptions: {
+    ecmaVersion: 10,
+    sourceType: "module",
   },
 
-  "rules": {
+  rules: {
     "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/camelcase": "off"
+    "@typescript-eslint/camelcase": "off",
   },
 
-  "overrides": [
+  overrides: [
     {
-      "files": ["**/*.js"],
-      "rules": {
-        "@typescript-eslint/explicit-function-return-type": "off"
-      }
-    }
-  ]
+      files: ["**/*.js"],
+      rules: {
+        "@typescript-eslint/explicit-function-return-type": "off",
+      },
+    },
+  ],
 };
