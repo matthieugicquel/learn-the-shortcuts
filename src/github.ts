@@ -15,11 +15,11 @@ init_lts([
   { selector: 'header [data-hotkey="g n"]', keys: "g n", placement: "left", comment: "Notifications" },
 
   /* Repository */
-  { selector: '.reponav [data-hotkey="g c"]', keys: "g c", comment: "Code" },
-  { selector: '.reponav [data-hotkey="g i"]', keys: "g i", comment: "Issues" },
-  { selector: '.reponav [data-hotkey="g p"]', keys: "g p", comment: "Pull requests" },
-  { selector: '.reponav [data-hotkey="g b"]', keys: "g b", comment: "Projects" },
-  { selector: '.reponav [data-hotkey="g w"][data-selected-links^="repo_wiki"]', keys: "g w", comment: "Wiki" },
+  { selector: '.js-repo-nav [data-hotkey="g c"]', keys: "g c", comment: "Code" },
+  { selector: '.js-repo-nav [data-hotkey="g i"]', keys: "g i", comment: "Issues" },
+  { selector: '.js-repo-nav [data-hotkey="g p"]', keys: "g p", comment: "Pull requests" },
+  { selector: '.js-repo-nav [data-hotkey="g b"]', keys: "g b", comment: "Projects" },
+  { selector: '.js-repo-nav [data-hotkey="g w"][data-selected-links^="repo_wiki"]', keys: "g w", comment: "Wiki" },
 
   /* TODO: Source code editing */
 
