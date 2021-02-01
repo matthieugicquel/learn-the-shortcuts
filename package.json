@@ -33,7 +33,7 @@
     "rollup": "^2.38.2",
     "rollup-plugin-chrome-extension": "^2.2.4",
     "rollup-plugin-empty-dir": "^1.0.4",
-    "rollup-plugin-iife": "^0.3.1",
+    "rollup-plugin-iife": "^0.4.0",
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-zip": "^1.0.1",
     "tslib": "^2.1.0",
