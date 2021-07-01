@@ -3110,10 +3110,10 @@ rollup-plugin-chrome-extension@^2.2.4:
     prettier "^1.19.1"
     slash "^3.0.0"
 
-rollup-plugin-empty-dir@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-empty-dir/-/rollup-plugin-empty-dir-1.0.4.tgz#f68e8f7c677d87df637aa83ffb7c300b32ac3c2e"
-  integrity sha512-aFtZmca23Y9n6Bl/q9GC+qPvnz5NUH0uoliIqAJvTaOyDOHvEsa1xFKb457hHSnc7Ks+Q+kIjpOOwrKAe50bUw==
+rollup-plugin-empty-dir@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-empty-dir/-/rollup-plugin-empty-dir-1.0.5.tgz#4df863084c55d220d0ea38408e6de07ac5f71491"
+  integrity sha512-wSfmBP/d8bLJvsgthDUiptZUCzAlkp/BUi/bk+7mUOF4GkFBKvnD8FK8xC+6PFwqO04SPHaJGfB8rOHfKBPJXQ==
   dependencies:
     fs-extra "^7.0.1"
 
