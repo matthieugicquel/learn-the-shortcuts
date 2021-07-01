@@ -3233,10 +3233,10 @@ rollup-plugin-postcss@^3.1.8:
     safe-identifier "^0.4.1"
     style-inject "^0.3.0"
 
-rollup-plugin-zip@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-zip/-/rollup-plugin-zip-1.0.1.tgz#cc7aba210224f1b783000917b3f18d87ba48681b"
-  integrity sha512-8FCEtN0sBYtItRX1Zlo6+NcezCRHKkf6w0hTNsHDCkN+LDzwQdLPE2pl28SvquTcMNA9KiTVL71i08lR0K9vgw==
+rollup-plugin-zip@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-zip/-/rollup-plugin-zip-1.0.2.tgz#6bfa03d384fa8a33533abdd8a04f732e86b092f3"
+  integrity sha512-8+AKUoliy8qNJprHauErJFti4E9kh6gG8pS4sqTkP3awb3TqdpvtjF3d0FFwyuBji/LGMKsUU9sTN8mPi3mO+A==
   dependencies:
     yazl "^2.5.1"
 
