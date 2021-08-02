@@ -30,7 +30,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "postcss-url": "^8.0.0",
     "prettier": "^2.3.2",
-    "rollup": "^2.50.5",
+    "rollup": "^2.55.1",
     "rollup-plugin-chrome-extension": "^2.2.4",
     "rollup-plugin-empty-dir": "^1.0.5",
     "rollup-plugin-iife": "^0.3.1",
